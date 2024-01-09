@@ -24,26 +24,24 @@ const ContactUs = () => {
         </h2>
         <div className="h-full w-full flex-1 p-10 flex flex-col gap-5 justify-start items-center text-white">
           <div className="flex-1 h-full space-y-5">
-            <div className="flex justify-start items-center gap-4">
+            <a href="https://www.bing.com/maps?osid=c0ed318f-49eb-4391-a930-3f9535a514a0&cp=19.134383~72.83181&lvl=17.17&pi=0&v=2&sV=2&form=S00027" target="_blank" title="View on Bing Maps" className="flex justify-start items-center gap-4">
               <i className="fa-solid fa-map-location-dot fa-xl text-cherry border border-white rounded-full px-4 py-7 text-center w-fit"></i>
-
-              <div className="flex flex-col justify-start items-start">
-                Veera Desai Road, B 103, Remi Bizcourt, <br /> Opposite Supreme
-                Chambers, <br /> Mumbai, Maharashtra 400053, IN
-              </div>
-            </div>
-            <div className="flex justify-start items-center gap-4">
+              Veera Desai Road, B 103, Remi Bizcourt, <br /> Opposite Supreme Chambers, <br /> Mumbai, Maharashtra 400053, IN
+            </a>
+            <a href="tel:+919913877730" target="_blank" title="Call us" className="flex justify-start items-center gap-4">
               <i className="fa-solid fa-phone fa-xl text-cherry border border-white rounded-full px-4 py-7 text-center w-fit"></i>
-              +0 123456789
-            </div>
-            <div className="flex justify-start items-center gap-4">
+              +91 9913877730
+            </a>
+            <a href="mailto:cherryfilms07@gmail.com" target="_blank" title="Send us an email" className="flex justify-start items-center gap-4">
               <i className="fa-solid fa-envelope fa-xl text-cherry border border-white rounded-full px-4 py-7 text-center w-fit"></i>
-              support@cherryfilms.com
-            </div>
+              cherryfilms07@gmail.com
+            </a>
           </div>
         </div>
       </div>
-    </section>
+
+
+    </section >
   );
 };
 
