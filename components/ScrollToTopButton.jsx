@@ -35,7 +35,7 @@ const ScrollToTopButton = () => {
     >
       <button
         onClick={scrollToTop}
-        className="bg-dark text-light p-3 px-4 rounded-full focus:outline-none shadow hover:scale-105 transition-transform duration-200"
+        className="bg-dark text-light p-2.5 px-4 rounded-full focus:outline-none shadow hover:scale-105 transition-transform duration-200"
         aria-label="Scroll to Top"
       >
         <i className="fa-solid fa-arrow-up fa-lg"></i>
