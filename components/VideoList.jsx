@@ -102,6 +102,11 @@ const VideoList = ({ playlistId }) => {
     ],
   };
 
+
+  const handleOpen = () => {
+    setSelected(null)
+    setOpenPlayer(false)
+  }
   return (
     <div>
       {videos?.length > 0 && (
@@ -130,7 +135,7 @@ const VideoList = ({ playlistId }) => {
       {selected ? (
         <Dialog
           open={openPlayer}
-          handler={setOpenPlayer}
+          handler={handleOpen}
           size="xl"
           className="bg-gradient-to-r from-gray-900 via-dark to-black"
         >
