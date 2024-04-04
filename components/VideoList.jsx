@@ -57,7 +57,7 @@ const VideoList = ({ playlistId }) => {
           })
           .filter((item) => item.image);
 
-        setVideos(fetchedVideos);
+        setVideos(fetchedVideos.length < 3 ? [...fetchedVideos, ...fetchedVideos, ...fetchedVideos] : fetchedVideos);
       } catch (error) {
         console.error("Error fetching playlist:", error);
       }
@@ -68,6 +68,7 @@ const VideoList = ({ playlistId }) => {
 
   const settings = {
     dots: true,
+    lazyLoad: true,
     infinite: true,
     speed: 500,
     slidesToShow: 4,
