@@ -4,12 +4,12 @@ const nextConfig = {
     config.module.rules.push({
       test: /\.(mp4|webm)$/,
       use: {
-        loader: "file-loader",
+        loader: 'file-loader',
         options: {
-          publicPath: "/_next",
-          name: "static/media/[name].[hash].[ext]",
-        },
-      },
+          publicPath: '/_next',
+          name: 'static/media/[name].[hash].[ext]'
+        }
+      }
     });
 
     return config;
@@ -17,11 +17,11 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: "https",
-        hostname: "**",
-      },
-    ],
-  },
+        protocol: 'https',
+        hostname: '**'
+      }
+    ]
+  }
 };
 
 module.exports = nextConfig;

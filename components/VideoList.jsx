@@ -102,6 +102,7 @@ const VideoList = ({ playlistId }) => {
     setSelected(null);
     setOpenPlayer(false);
   };
+
   return (
     <div>
       {videos?.length > 0 && (
