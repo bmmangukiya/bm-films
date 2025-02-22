@@ -5,8 +5,8 @@ function Hero({ text, imgSrc }) {
       id="home-section"
       style={{
         backgroundImage: `url(${imgSrc})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center'
       }}
     >
       <div className="absolute inset-0 flex items-center justify-center">

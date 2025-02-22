@@ -1,21 +1,22 @@
-"use client";
-import React, { useEffect, useRef, useState } from "react";
-import { register } from "swiper/element/bundle";
-import Image from "next/image";
+'use client';
+import React, { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 
-import youtube from "../app/youtube";
+import { register } from 'swiper/element/bundle';
 
-const VideoList = ({ playlistId = "PLXCoHsJ9oLefdEEDu6BfXyGhzdaqX0FhP" }) => {
+import youtube from '../app/youtube';
+
+const VideoList = ({ playlistId = 'PLXCoHsJ9oLefdEEDu6BfXyGhzdaqX0FhP' }) => {
   const [videos, setVideos] = useState([]);
   const swiperElRef = useRef(null);
 
   useEffect(() => {
     const fetchPlaylist = async () => {
       try {
-        const response = await youtube.get("/playlistItems", {
+        const response = await youtube.get('/playlistItems', {
           params: {
-            playlistId: playlistId,
-          },
+            playlistId: playlistId
+          }
         });
 
         console.log(response);
@@ -23,14 +24,14 @@ const VideoList = ({ playlistId = "PLXCoHsJ9oLefdEEDu6BfXyGhzdaqX0FhP" }) => {
         const fetchedVideos = response.data.items.map((item) => ({
           id: item.snippet.resourceId.videoId,
           title: item.snippet.title,
-          thumbnailUrl: item.snippet.thumbnails.high.url,
+          thumbnailUrl: item.snippet.thumbnails.high.url
         }));
 
         console.log(fetchedVideos);
 
         setVideos(fetchedVideos);
       } catch (error) {
-        console.error("Error fetching playlist:", error);
+        console.error('Error fetching playlist:', error);
       }
     };
 
@@ -47,8 +48,8 @@ const VideoList = ({ playlistId = "PLXCoHsJ9oLefdEEDu6BfXyGhzdaqX0FhP" }) => {
       breakpoints: {
         768: {
           // slidesPerView: 4,
-        },
-      },
+        }
+      }
     };
 
     Object.assign(swiperElRef.current, params);

@@ -1,6 +1,7 @@
-import React from "react";
-import VideoList from "./VideoList";
-import CommonHeadings from "./CommonHeadings";
+import React from 'react';
+
+import CommonHeadings from './CommonHeadings';
+import VideoList from './VideoList';
 
 const VideoSection = ({ title, playlistId }) => {
   return (

@@ -1,6 +1,6 @@
-"use client";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
+'use client';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 const ScrollLink = ({ href, scrollToSelector, children, pagePath }) => {
   const router = useRouter();
@@ -13,7 +13,7 @@ const ScrollLink = ({ href, scrollToSelector, children, pagePath }) => {
         if (scrollToSelector) {
           const targetElement = document.querySelector(scrollToSelector);
           if (targetElement) {
-            targetElement.scrollIntoView({ behavior: "smooth" });
+            targetElement.scrollIntoView({ behavior: 'smooth' });
           }
         }
       }, 10);
@@ -22,7 +22,7 @@ const ScrollLink = ({ href, scrollToSelector, children, pagePath }) => {
     if (scrollToSelector) {
       const targetElement = document.querySelector(scrollToSelector);
       if (targetElement) {
-        targetElement.scrollIntoView({ behavior: "smooth" });
+        targetElement.scrollIntoView({ behavior: 'smooth' });
       }
     }
   };

@@ -1,14 +1,15 @@
-"use client";
-import React, { useEffect, useState } from "react";
-import Image from "next/image";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+'use client';
+import React, { useEffect, useState } from 'react';
+import Image from 'next/image';
 
-import NavigationArrow from "./NavigationArrow";
-import { Dialog, DialogHeader, DialogBody } from "@material-tailwind/react";
-import YoutubePlayer from "./YoutubePlayer";
-import youtube from "app/youtube";
+import { Dialog, DialogHeader, DialogBody } from '@material-tailwind/react';
+import youtube from 'app/youtube';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+
+import NavigationArrow from './NavigationArrow';
+import YoutubePlayer from './YoutubePlayer';
 
 const VideoList = ({ playlistId }) => {
   const [videos, setVideos] = useState([]);
@@ -24,22 +25,16 @@ const VideoList = ({ playlistId }) => {
   useEffect(() => {
     const fetchPlaylist = async () => {
       try {
-        const videos = await youtube.get("/playlistItems", {
+        const videos = await youtube.get('/playlistItems', {
           params: {
-            playlistId: playlistId,
-          },
+            playlistId: playlistId
+          }
         });
 
         const fetchedVideos = videos?.data?.items
-          .map(({ snippet: { resourceId, title, thumbnails } }, i) => {
+          .map(({ snippet: { resourceId, title, thumbnails } }) => {
             let selectedImage;
-            const imageSizes = [
-              "maxres",
-              "medium",
-              "standard",
-              "high",
-              "default",
-            ];
+            const imageSizes = ['maxres', 'medium', 'standard', 'high', 'default'];
             for (const size of imageSizes) {
               if (thumbnails[size]) {
                 selectedImage = thumbnails[size];
@@ -51,7 +46,7 @@ const VideoList = ({ playlistId }) => {
               return {
                 id: resourceId.videoId,
                 title,
-                image: selectedImage,
+                image: selectedImage
               };
             }
           })
@@ -59,7 +54,7 @@ const VideoList = ({ playlistId }) => {
 
         setVideos(fetchedVideos.length < 3 ? [...fetchedVideos, ...fetchedVideos, ...fetchedVideos] : fetchedVideos);
       } catch (error) {
-        console.error("Error fetching playlist:", error);
+        console.error('Error fetching playlist:', error);
       }
     };
 
@@ -82,42 +77,37 @@ const VideoList = ({ playlistId }) => {
           slidesToShow: 3,
           slidesToScroll: 3,
           infinite: true,
-          dots: true,
-        },
+          dots: true
+        }
       },
       {
         breakpoint: 600,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
-          initialSlide: 2,
-        },
+          initialSlide: 2
+        }
       },
       {
         breakpoint: 480,
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
+          slidesToScroll: 1
+        }
+      }
+    ]
   };
 
-
   const handleOpen = () => {
-    setSelected(null)
-    setOpenPlayer(false)
-  }
+    setSelected(null);
+    setOpenPlayer(false);
+  };
   return (
     <div>
       {videos?.length > 0 && (
         <Slider {...settings}>
           {videos.map(({ id, title, image: { url, height, width } }, index) => (
-            <div
-              key={index}
-              className="px-5 flex flex-col space-y-2"
-              onClick={() => setSelected({ title, id })}
-            >
+            <div key={index} className="px-5 flex flex-col space-y-2" onClick={() => setSelected({ title, id })}>
               <div className="overflow-hidden rounded-md">
                 <Image
                   src={url}
@@ -134,16 +124,9 @@ const VideoList = ({ playlistId }) => {
         </Slider>
       )}
       {selected ? (
-        <Dialog
-          open={openPlayer}
-          handler={handleOpen}
-          size="xl"
-          className="bg-gradient-to-r from-gray-900 via-dark to-black"
-        >
+        <Dialog open={openPlayer} handler={handleOpen} size="xl" className="bg-gradient-to-r from-gray-900 via-dark to-black">
           <DialogBody className="px-5">
-            <DialogHeader className="text-xs sm:text-sm md:text-base lg:text-xl text-white">
-              {selected?.title}
-            </DialogHeader>
+            <DialogHeader className="text-xs sm:text-sm md:text-base lg:text-xl text-white">{selected?.title}</DialogHeader>
             <YoutubePlayer videoId={selected.id} />
           </DialogBody>
         </Dialog>
