@@ -124,15 +124,13 @@ const VideoList = ({ playlistId }) => {
           ))}
         </Slider>
       )}
-      {selected ? (
-        <Dialog open={openPlayer} handler={handleOpen} size="xl" className="bg-gradient-to-r from-gray-900 via-dark to-black">
-          <DialogBody className="px-5">
-            <DialogHeader className="text-xs sm:text-sm md:text-base lg:text-xl text-white">{selected?.title}</DialogHeader>
+      {selected && (
+        <Dialog open={openPlayer} handler={handleOpen} size="lg" className="bg-gradient-to-r from-gray-900 via-dark to-black">
+          <DialogBody>
+            <DialogHeader className="text-xs sm:text-sm md:text-base lg:text-xl text-gray-300 px-0 pt-0">{selected?.title}</DialogHeader>
             <YoutubePlayer videoId={selected.id} />
           </DialogBody>
         </Dialog>
-      ) : (
-        <></>
       )}
     </div>
   );
