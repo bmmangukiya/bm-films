@@ -1,7 +1,9 @@
 import React from 'react';
+import dynamic from 'next/dynamic';
 
 import CommonHeadings from './CommonHeadings';
-import VideoList from './VideoList';
+
+const VideoList = dynamic(() => import('./VideoList'), { ssr: false });
 
 const VideoSection = ({ title, playlistId }) => {
   return (

@@ -1,26 +1,20 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 
+import Glide from '@glidejs/glide';
+import '@glidejs/glide/dist/css/glide.core.min.css';
+import '@glidejs/glide/dist/css/glide.theme.min.css';
 import { Dialog, DialogHeader, DialogBody } from '@material-tailwind/react';
 import youtube from 'app/youtube';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
 
-import NavigationArrow from './NavigationArrow';
 import YoutubePlayer from './YoutubePlayer';
 
 const VideoList = ({ playlistId }) => {
   const [videos, setVideos] = useState([]);
   const [openPlayer, setOpenPlayer] = useState(false);
   const [selected, setSelected] = useState(null);
-
-  useEffect(() => {
-    if (selected !== null && !openPlayer) {
-      setOpenPlayer(true);
-    }
-  }, [openPlayer, selected]);
+  const glideRef = useRef(null);
 
   useEffect(() => {
     const fetchPlaylist = async () => {
@@ -61,73 +55,79 @@ const VideoList = ({ playlistId }) => {
     fetchPlaylist();
   }, [playlistId]);
 
-  const settings = {
-    dots: true,
-    lazyLoad: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    nextArrow: <NavigationArrow type="next" />,
-    prevArrow: <NavigationArrow type="prev" />,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
-          dots: true
+  useEffect(() => {
+    if (videos.length > 0) {
+      const glide = new Glide(glideRef.current, {
+        type: 'carousel',
+        perView: 4,
+        gap: 10,
+        breakpoints: {
+          1024: { perView: 3 },
+          768: { perView: 2 },
+          480: { perView: 1 }
         }
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2
-        }
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
+      });
+
+      glide.mount();
+
+      return () => glide.destroy();
+    }
+  }, [videos]);
+
+  const handleOpen = (video) => {
+    setSelected(video);
+    setOpenPlayer(true);
   };
 
-  const handleOpen = () => {
+  const handleClose = () => {
     setSelected(null);
     setOpenPlayer(false);
   };
 
   return (
     <div>
-      {videos?.length > 0 && (
-        <Slider {...settings}>
-          {videos.map(({ id, title, image: { url, height, width } }, index) => (
-            <div key={index} className="px-5 flex flex-col space-y-2" onClick={() => setSelected({ title, id })}>
-              <div className="overflow-hidden rounded-md">
-                <Image
-                  src={url}
-                  alt="YouTube Thumbnail"
-                  className="w-full h-full object-cover "
-                  height={height}
-                  width={width}
-                  loading="lazy"
-                />
-              </div>
-              <div className="font-medium text-sm ">{title}</div>
-            </div>
-          ))}
-        </Slider>
+      {videos.length > 0 && (
+        <div className="glide" ref={glideRef}>
+          <div className="glide__track" data-glide-el="track">
+            <ul className="glide__slides">
+              {videos.map((video, index) => (
+                <li key={index} className="glide__slide px-5 flex flex-col space-y-2" onClick={() => handleOpen(video)}>
+                  <div className="overflow-hidden rounded-md">
+                    <Image
+                      src={video.image?.url}
+                      alt={video.title}
+                      className="w-full h-full object-cover"
+                      height={video.image?.height}
+                      width={video.image?.width}
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="font-medium text-sm">{video.title}</div>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Navigation Arrows */}
+          <div className="glide__arrows" data-glide-el="controls">
+            <button className="glide__arrow glide__arrow--left" data-glide-dir="<">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 256 256" fill="currentColor">
+                <path d="M168.49,199.51a12,12,0,0,1-17,17l-80-80a12,12,0,0,1,0-17l80-80a12,12,0,0,1,17,17L97,128Z"></path>
+              </svg>
+            </button>
+            <button className="glide__arrow glide__arrow--right" data-glide-dir=">">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 256 256" fill="currentColor">
+                <path d="M184.49,136.49l-80,80a12,12,0,0,1-17-17L159,128,87.51,56.49a12,12,0,1,1,17-17l80,80A12,12,0,0,1,184.49,136.49Z"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
       )}
+
       {selected && (
-        <Dialog open={openPlayer} handler={handleOpen} size="lg" className="bg-gradient-to-r from-gray-900 via-dark to-black">
+        <Dialog open={openPlayer} handler={handleClose} size="lg">
+          <DialogHeader>{selected.title}</DialogHeader>
           <DialogBody>
-            <DialogHeader className="text-xs sm:text-sm md:text-base lg:text-xl text-gray-300 px-0 pt-0">{selected?.title}</DialogHeader>
             <YoutubePlayer videoId={selected.id} />
           </DialogBody>
         </Dialog>
