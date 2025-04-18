@@ -32,7 +32,6 @@ const YoutubePlayer = ({ videoId }) => {
           title={`YouTube video: ${videoId}`}
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowFullScreen
-          autoPlay
         ></iframe>
       ) : (
         <div>Loading...</div>
