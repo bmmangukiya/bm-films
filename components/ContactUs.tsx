@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { AnimatedText } from './Animation/AnimatedText';
+
 const ContactUs = () => {
   return (
     <section id="contact-section" className="min-h-screen pt-28 relative bg-light transition-all flex flex-col overflow-clip">
@@ -16,9 +18,8 @@ const ContactUs = () => {
         ></iframe>
       </div>
       <div className="lg:absolute flex flex-col gap-8 justify-center items-center shadow-md shadow-cherry bg-dark lg:-mt-44 py-10 lg:py-24 md:px-10 lg:w-[50%] w-full drop-shadow-lg sm:top-[60%] lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:-translate-y-1/5">
-        <h2 className="uppercase text-4xl font-bold text-white text-center w-full tracking-widest">
-          <span className="border-b-2 border-cherry">Contact Us</span>
-        </h2>
+        <AnimatedText text="Contact Us" textClassName="text-4xl font-bold text-white" duration={0.02} />
+
         <div className="h-full w-full flex-1 p-10 flex flex-col gap-5 justify-start items-center text-white">
           <div className="flex-1 h-full space-y-5">
             <a

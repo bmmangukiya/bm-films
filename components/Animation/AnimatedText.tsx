@@ -1,6 +1,8 @@
+'use client';
+
 import * as React from 'react';
 
-import { motion, Variants } from 'framer-motion';
+import { motion, useInView, Variants } from 'framer-motion';
 
 import { cn } from '@/lib/utils';
 
@@ -8,13 +10,13 @@ interface AnimatedTextProps extends React.HTMLAttributes<HTMLDivElement> {
   text: string;
   duration?: number;
   delay?: number;
-  replay?: boolean;
   className?: string;
   textClassName?: string;
   underlineClassName?: string;
   underlineGradient?: string;
   underlineHeight?: string;
   underlineOffset?: string;
+  once?: boolean;
 }
 
 const AnimatedText = React.forwardRef<HTMLDivElement, AnimatedTextProps>(
@@ -23,23 +25,24 @@ const AnimatedText = React.forwardRef<HTMLDivElement, AnimatedTextProps>(
       text,
       duration = 0.5,
       delay = 0.1,
-      replay = true,
       className,
       textClassName,
       underlineClassName,
       underlineGradient = 'from-indigo-500 via-white to-rose-500',
       underlineHeight = 'h-1',
       underlineOffset = '-bottom-2',
+      once = false,
       ...props
     },
     ref
   ) => {
+    const localRef = React.useRef(null);
+    const inView = useInView(localRef, { once });
+
     const letters = Array.from(text);
 
     const container: Variants = {
-      hidden: {
-        opacity: 0
-      },
+      hidden: { opacity: 0 },
       visible: (i: number = 1) => ({
         opacity: 1,
         transition: {
@@ -53,20 +56,12 @@ const AnimatedText = React.forwardRef<HTMLDivElement, AnimatedTextProps>(
       visible: {
         opacity: 1,
         y: 0,
-        transition: {
-          type: 'spring',
-          damping: 12,
-          stiffness: 200
-        }
+        transition: { type: 'spring', damping: 12, stiffness: 200 }
       },
       hidden: {
         opacity: 0,
         y: 20,
-        transition: {
-          type: 'spring',
-          damping: 12,
-          stiffness: 200
-        }
+        transition: { type: 'spring', damping: 12, stiffness: 200 }
       }
     };
 
@@ -87,13 +82,21 @@ const AnimatedText = React.forwardRef<HTMLDivElement, AnimatedTextProps>(
     };
 
     return (
-      <div ref={ref} className={cn('flex flex-col items-center justify-center gap-2', className)} {...props}>
+      <div
+        ref={(node) => {
+          localRef.current = node;
+          if (typeof ref === 'function') ref(node);
+          else if (ref) (ref as React.MutableRefObject<HTMLDivElement>).current = node;
+        }}
+        className={cn('flex flex-col items-center justify-center gap-2', className)}
+        {...props}
+      >
         <div className="relative">
           <motion.div
             style={{ display: 'flex', overflow: 'hidden' }}
             variants={container}
             initial="hidden"
-            animate={replay ? 'visible' : 'hidden'}
+            animate={inView ? 'visible' : 'hidden'}
             className={cn('text-4xl font-bold text-center', textClassName)}
           >
             {letters.map((letter, index) => (
@@ -106,7 +109,7 @@ const AnimatedText = React.forwardRef<HTMLDivElement, AnimatedTextProps>(
           <motion.div
             variants={lineVariants}
             initial="hidden"
-            animate="visible"
+            animate={inView ? 'visible' : 'hidden'}
             className={cn('absolute', underlineHeight, underlineOffset, 'bg-gradient-to-r', underlineGradient, underlineClassName)}
           />
         </div>
@@ -114,6 +117,7 @@ const AnimatedText = React.forwardRef<HTMLDivElement, AnimatedTextProps>(
     );
   }
 );
+
 AnimatedText.displayName = 'AnimatedText';
 
 export { AnimatedText };

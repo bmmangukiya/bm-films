@@ -1,7 +1,7 @@
 'use client';
 import React, { useMemo } from 'react';
 
-import CommonHeadings from './CommonHeadings';
+import { AnimatedText } from './Animation/AnimatedText';
 import ServiceCard from './ServiceCard';
 
 const OurServices = () => {
@@ -16,7 +16,8 @@ const OurServices = () => {
 
   return (
     <section className="w-screen min-h-screen flex flex-col py-10 gap-10 md:gap-16 lg:gap-20 2xl:gap-28 justify-center items-center bg-[#FAFBFB]">
-      <CommonHeadings title={'Our Services'} />
+      <AnimatedText text="Our Services" textClassName="text-dark text-6xl font-extrabold py-5" duration={0.02} />
+
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 px-8">
         {services.map((service) => (
           <ServiceCard key={service.title} title={service.title} url={service.url} bg={service.bg} />

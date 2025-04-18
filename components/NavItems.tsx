@@ -1,6 +1,5 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 
 import ScrollLink from './ScrollLink';
 
@@ -17,33 +16,42 @@ const ourServicesSubMenu = [
   { name: 'Events', href: '/ourservices/events' }
 ];
 
-export const NavItems = ({ isScrolling, isSmall = false }) => {
+type NavItemsProps = {
+  isScrolling: boolean;
+  isSmall?: boolean;
+  onItemClick?: () => void;
+};
+
+export const NavItems: React.FC<NavItemsProps> = React.memo(({ isScrolling, isSmall = false, onItemClick }) => {
   const [open, setOpen] = useState(false);
-  const path = usePathname();
 
   return (
     <>
       {NAV_MENU.map(({ name, href = '', scrollToSelector }, index) => {
         if (name !== 'Our Services') {
           return (
-            <ScrollLink href={href} scrollToSelector={scrollToSelector} pagePath={path} key={index + name}>
-              <span className={`hover:text-cherry hover:tracking-wider hover:font-medium transition-all ${isSmall ? 'text-xl' : ''}`}>
+            <ScrollLink href={href} scrollToSelector={scrollToSelector} key={index + name}>
+              <div
+                className={`hover:text-cherry hover:tracking-wider hover:font-medium transition-all text-white px-2 pt-4 lg:pt-0 ${isSmall ? 'text-xl' : ''}`}
+                onClick={onItemClick}
+              >
                 {name}
-              </span>
+              </div>
             </ScrollLink>
           );
         } else {
           return (
-            <div role="navigation" aria-label="Our Services" key={index + name}>
+            <div role="navigation" aria-label="Our Services" key={index + name} className="flex">
               {isSmall ? (
-                <div className="flex flex-col gap-4 w-32 border-0 text-black">
+                <div className="flex flex-col w-32 border-0 text-black px-2">
                   {ourServicesSubMenu.map(({ name, href = '' }, index) => (
                     <Link
                       href={href}
                       key={index}
-                      className={`hover:text-cherry hover:tracking-wider hover:font-medium transition-all w-full outline-none ${
+                      className={`hover:text-cherry hover:tracking-wider hover:font-medium transition-all w-full outline-none text-white pt-4 lg:pt-0 ${
                         isSmall ? 'text-xl' : ''
-                      } ${isScrolling ? 'text-black' : 'text-white'}`}
+                      } ${isScrolling ? 'lg:text-black' : ''}`}
+                      onClick={onItemClick}
                     >
                       {name}
                     </Link>
@@ -60,13 +68,14 @@ export const NavItems = ({ isScrolling, isSmall = false }) => {
                   </button>
                   {open && (
                     <div
-                      className={`absolute left-0 mt-7 w-32  shadow-lg rounded-lg z-10 ${isScrolling ? 'text-black bg-white' : 'text-white bg-transparent'}`}
+                      className={`absolute left-0 mt-7 w-32 shadow-lg rounded-lg z-10 ${isScrolling ? 'text-black bg-white' : 'text-white bg-transparent'}`}
                     >
                       {ourServicesSubMenu.map(({ name, href = '' }, index) => (
                         <Link
                           href={href}
                           key={index}
                           className={`block px-4 py-2 hover:text-cherry transition-all ${isScrolling ? 'text-black' : 'text-white'}`}
+                          onClick={onItemClick}
                         >
                           {name}
                         </Link>
@@ -81,4 +90,4 @@ export const NavItems = ({ isScrolling, isSmall = false }) => {
       })}
     </>
   );
-};
+});
