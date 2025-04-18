@@ -43,7 +43,7 @@ export function Navbar() {
     >
       <div className="container mx-auto flex items-center px-5">
         <ScrollLink href="/" pagePath="/">
-          <Image src="/bm-films.svg" alt={'Cherry Films Logo'} width={95} height={25} className="h-8 w-28" />
+          <Image src="/bm-films.svg" alt={'BM Films Logo'} width={95} height={25} className="h-8 w-28" />
         </ScrollLink>
         <div className={`ml-10 hidden items-center gap-6 lg:flex mr-auto text-white`}>
           <NavItems isScrolling={isScrolling} />

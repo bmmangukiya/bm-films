@@ -17,7 +17,7 @@ const Footer = () => {
       </div>
       <div>
         <div color="blue-gray" className="font-semibold">
-          &copy; 2023 All Rights Reserved Cherry Films
+          &copy; 2023 All Rights Reserved BM Films
         </div>
         <div color="blue-gray" className="text-xs inline-flex items-center w-full gap-1">
           Designed & Developed with

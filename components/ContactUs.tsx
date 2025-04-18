@@ -28,20 +28,15 @@ const ContactUs = () => {
               className="flex justify-start items-center gap-4"
             >
               <i className="fa-solid fa-map-location-dot fa-xl text-cherry border border-white rounded-full px-4 py-7 text-center w-fit"></i>
-              Veera Desai Road, B 103, Remi Bizcourt, <br /> Opposite Supreme Chambers, <br /> Mumbai, Maharashtra 400053, IN
+              Veera Desai Road, B 999, Remi Bizcourt, <br /> Opposite Supreme Chambers, <br /> Mumbai, Maharashtra 400053, IN
             </a>
             <a href="tel:+919913877730" target="_blank" title="Call us" className="flex justify-start items-center gap-4">
               <i className="fa-solid fa-phone fa-xl text-cherry border border-white rounded-full px-4 py-7 text-center w-fit"></i>
               +91 9913877730
             </a>
-            <a
-              href="mailto:cherryfilms07@gmail.com"
-              target="_blank"
-              title="Send us an email"
-              className="flex justify-start items-center gap-4"
-            >
+            <a href="mailto:contact@bmfilms.com" target="_blank" title="Send us an email" className="flex justify-start items-center gap-4">
               <i className="fa-solid fa-envelope fa-xl text-cherry border border-white rounded-full px-4 py-7 text-center w-fit"></i>
-              cherryfilms07@gmail.com
+              contact@bmfilms.com
             </a>
           </div>
         </div>
