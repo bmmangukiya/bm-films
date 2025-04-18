@@ -2,23 +2,23 @@ export const socialMedias = [
   {
     name: 'Instagram',
     icon: 'instagram',
-    link: 'https://www.instagram.com/cherryfilms7/'
+    link: 'https://www.instagram.com/bmfilms'
   },
   {
     name: 'Facebook',
     icon: 'facebook',
-    link: 'https://www.facebook.com/cherryfilms7'
+    link: 'https://www.facebook.com/bmfilms'
   },
-  // { name: "Twitter", icon: "twitter", link: "https://twitter.com/example/" },
+  { name: 'Twitter', icon: 'twitter', link: 'https://twitter.com/example/' },
   {
     name: 'LinkedIn',
     icon: 'linkedin',
-    link: 'https://www.linkedin.com/company/cherryfilms'
+    link: 'https://www.linkedin.com/company/bmfilms'
   },
   {
     name: 'YouTube',
     icon: 'youtube',
-    link: 'https://www.youtube.com/@CherryFilms07'
+    link: 'https://www.youtube.com/@BMFilms'
   }
 ];
 

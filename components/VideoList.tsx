@@ -5,8 +5,9 @@ import Image from 'next/image';
 import Glide from '@glidejs/glide';
 import '@glidejs/glide/dist/css/glide.core.min.css';
 import '@glidejs/glide/dist/css/glide.theme.min.css';
-import { Dialog, DialogHeader, DialogBody } from '@material-tailwind/react';
-import youtube from 'app/youtube';
+import { Dialog } from '@headlessui/react'; // Use Dialog from @headlessui/react
+
+import youtube from '@/app/youtube';
 
 import YoutubePlayer from './YoutubePlayer';
 
@@ -125,11 +126,21 @@ const VideoList = ({ playlistId }) => {
       )}
 
       {selected && (
-        <Dialog open={openPlayer} handler={handleClose} size="lg">
-          <DialogHeader>{selected.title}</DialogHeader>
-          <DialogBody>
-            <YoutubePlayer videoId={selected.id} />
-          </DialogBody>
+        <Dialog open={openPlayer} onClose={handleClose}>
+          {/* Modal Content */}
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+            <div className="bg-white rounded-lg p-6 max-w-lg w-full">
+              <Dialog.Title className="text-xl font-semibold text-center">{selected.title}</Dialog.Title>
+              <div className="aspect-video mt-4">
+                <YoutubePlayer videoId={selected.id} />
+              </div>
+              <div className="mt-4 text-center">
+                <button className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600" onClick={handleClose}>
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
         </Dialog>
       )}
     </div>
