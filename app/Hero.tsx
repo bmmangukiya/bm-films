@@ -1,5 +1,22 @@
-'use server';
+'use client';
 import React from 'react';
+
+import { motion } from 'framer-motion';
+
+import { cn } from '@/lib/utils';
+
+const fadeUpVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 1,
+      delay: 0.5 + i * 0.2,
+      ease: [0.25, 0.4, 0.25, 1]
+    }
+  })
+};
 
 function Hero() {
   return (
@@ -19,10 +36,17 @@ function Hero() {
       </video>
 
       <div className="absolute inset-0 flex flex-col items-center justify-center h-full w-full z-10">
-        <div className="mb-4">
-          <h1 className="uppercase text-cherry text-center text-7xl  font-sans italic font-extrabold">Cherry Films</h1>
-        </div>
-        <p className="text-white text-xl italic tracking-widest">Excellence in execution</p>
+        <motion.div custom={1} variants={fadeUpVariants} initial="hidden" animate="visible">
+          <h1 className="text-3xl sm:text-5xl md:text-7xl uppercase font-bold mb-6 md:mb-8 tracking-tight">
+            <span className={cn('bg-clip-text text-transparent bg-gradient-to-r from-indigo-300 via-white/90 to-rose-300 ')}>BM Films</span>
+          </h1>
+        </motion.div>
+
+        <motion.div custom={2} variants={fadeUpVariants} initial="hidden" animate="visible">
+          <p className="text-base sm:text-lg md:text-xl text-white/40 mb-8 leading-relaxed font-light tracking-wide max-w-xl mx-auto px-4">
+            Excellence in execution
+          </p>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,11 +1,15 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@theme {
+  --color-cherry: #db013f;
+  --color-dark: #131313;
+  --color-light: #f5f4f4;
+}
 
 .slick-arrow.slick-next:before {
-  content: "";
+  content: '';
 }
 
 .slick-arrow.slick-prev:before {
-  content: "";
+  content: '';
 }

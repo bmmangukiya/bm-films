@@ -6,8 +6,6 @@ import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
 import ScrollToTopButton from '@/components/ScrollToTopButton';
 
-import { Layout } from '../components/layout';
-
 const roboto = Roboto({
   subsets: ['latin'],
   weight: ['300', '400', '500', '700', '900'],
@@ -30,7 +28,7 @@ export default function RootLayout({ children }) {
       <head></head>
       <body className={roboto.className}>
         <Navbar />
-        <Layout>{children}</Layout>
+        {children}
         <Footer />
         <ScrollToTopButton />
 
