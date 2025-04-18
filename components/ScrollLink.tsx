@@ -2,17 +2,18 @@
 
 import React, { MouseEvent, ReactNode } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 interface ScrollLinkProps {
   href: string;
   scrollToSelector?: string;
   children: ReactNode;
-  pagePath: string;
+  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
 }
 
-const ScrollLinkComponent: React.FC<ScrollLinkProps> = ({ href, scrollToSelector, children, pagePath }) => {
+const ScrollLinkComponent: React.FC<ScrollLinkProps> = ({ href, scrollToSelector, children, onClick }) => {
   const router = useRouter();
+  const pathname = usePathname();
 
   const handleClick = (event: MouseEvent<HTMLDivElement>) => {
     event.preventDefault();
@@ -26,7 +27,7 @@ const ScrollLinkComponent: React.FC<ScrollLinkProps> = ({ href, scrollToSelector
       }
     };
 
-    if (pagePath !== href) {
+    if (pathname !== href) {
       router.push(href);
       setTimeout(scrollToTarget, 10);
     } else {
@@ -35,8 +36,8 @@ const ScrollLinkComponent: React.FC<ScrollLinkProps> = ({ href, scrollToSelector
   };
 
   return (
-    <Link href={href} passHref>
-      <div onClick={handleClick} style={{ cursor: 'pointer' }}>
+    <Link href={href} passHref onClick={onClick}>
+      <div onClick={handleClick} className="cursor-pointer">
         {children}
       </div>
     </Link>

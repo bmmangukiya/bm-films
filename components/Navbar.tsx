@@ -1,5 +1,6 @@
 'use client';
-import React, { useEffect, useState } from 'react';
+
+import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 
 import { socialMedias } from '@/lib/constant';
@@ -7,9 +8,11 @@ import { socialMedias } from '@/lib/constant';
 import { NavItems } from './NavItems';
 import ScrollLink from './ScrollLink';
 
-export function Navbar() {
+const Navbar = React.memo(() => {
   const [open, setOpen] = useState(false);
   const [isScrolling, setIsScrolling] = useState(false);
+
+  const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -31,23 +34,27 @@ export function Navbar() {
       window.removeEventListener('resize', handleResize);
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [setOpen, setIsScrolling]);
+  }, []);
 
   const toggleNavbar = () => setOpen((prev) => !prev);
 
   return (
     <div
-      className={`fixed top-0 z-[9999] border-0 transition-all ease-in-out duration-500 delay-0 w-full p-2 ${
-        isScrolling ? 'bg-black shadow-lg' : 'bg-transparent pt-4'
+      className={`fixed top-0 z-[9999] transition-all ease-in-out duration-500 w-[100dvw] bg-black flex justify-center p-2 py-4 ${
+        isScrolling ? 'bg-black shadow-lg' : 'lg:bg-transparent'
       }`}
     >
-      <div className="container mx-auto flex items-center px-5">
-        <ScrollLink href="/" pagePath="/">
-          <Image src="/bm-films.svg" alt={'BM Films Logo'} width={95} height={25} className="h-8 w-28" />
+      <div className="container flex align-middle px-4 sm:px-5">
+        <ScrollLink href="/" onClick={() => setOpen(false)} scrollToSelector="#home-section">
+          <Image src="/bm-films.svg" alt={'BM Films Logo'} width={95} height={25} className="h-8 w-9" />
         </ScrollLink>
+
+        {/* Desktop nav */}
         <div className={`ml-10 hidden items-center gap-6 lg:flex mr-auto text-white`}>
           <NavItems isScrolling={isScrolling} />
         </div>
+
+        {/* Desktop social */}
         <div className="hidden items-center gap-4 lg:flex">
           {socialMedias.map(({ name, icon, link }, index) => (
             <a key={index} href={link} target="_blank" rel="noopener noreferrer" title={`Visit ${name}'s profile`}>
@@ -57,13 +64,17 @@ export function Navbar() {
             </a>
           ))}
         </div>
-        <button className={`inline-block lg:hidden text-white`} onClick={toggleNavbar} aria-expanded={open}>
+
+        {/* Hamburger menu */}
+        <button className="inline-block lg:hidden text-white ml-auto" onClick={toggleNavbar} aria-expanded={open}>
           <i className={`fa-solid ${open ? 'fa-xmark' : 'fa-bars'} fa-xl`}></i>
         </button>
+
+        {/* Mobile nav dropdown */}
         {open && (
-          <div className="lg:hidden absolute left-0 top-0 w-full bg-black z-50">
-            <NavItems isSmall={true} isScrolling={isScrolling} />
-            <div className="mt-6 flex items-center gap-4 flex-wrap">
+          <div ref={menuRef} className="lg:hidden absolute right-0 top-16 w-full bg-black z-50 px-4 sm:px-5 border-t border-white">
+            <NavItems isSmall={true} isScrolling={isScrolling} onItemClick={() => setOpen(false)} />
+            <div className="mt-4 flex gap-6 flex-wrap p-2 pb-6">
               {socialMedias.map(({ name, icon, link }, index) => (
                 <a key={index} href={link} target="_blank" rel="noopener noreferrer" title={`Visit ${name}'s profile`}>
                   <i
@@ -77,6 +88,6 @@ export function Navbar() {
       </div>
     </div>
   );
-}
+});
 
 export default Navbar;
