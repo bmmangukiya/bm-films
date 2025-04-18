@@ -2,11 +2,11 @@ import './globals.css';
 import React from 'react';
 import { Roboto } from 'next/font/google';
 
-import { Layout } from '../components/layout';
-
 import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
 import ScrollToTopButton from '@/components/ScrollToTopButton';
+
+import { Layout } from '../components/layout';
 
 const roboto = Roboto({
   subsets: ['latin'],

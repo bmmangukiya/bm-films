@@ -13,7 +13,7 @@ export const metadata = {
   }
 };
 
-const page = () => {
+const page: React.FC = () => {
   return (
     <div className="overflow-x-hidden">
       <Hero text="Events" imgSrc={'/events.jpg'} />

@@ -8,11 +8,11 @@ export function PlayerDialog({ setOpen, selected }) {
   const handleOpen = () => setOpen((cur) => !cur);
 
   return (
-    <Dialog open={true} handler={handleOpen} size="xs" className="">
+    <div data-dialog-backdrop="dialog" data-dialog-backdrop-close="true" open={true} handler={handleOpen} size="xs" className="">
       <DialogBody className="aspect-video">
         <YoutubePlayer videoId={selected?.id} />
       </DialogBody>
       <DialogHeader>{selected?.title ?? ''}</DialogHeader>
-    </Dialog>
+    </div>
   );
 }

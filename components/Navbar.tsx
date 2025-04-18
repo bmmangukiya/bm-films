@@ -6,10 +6,10 @@ import { usePathname } from 'next/navigation';
 
 import { Menu, MenuList, MenuHandler } from '@material-tailwind/react';
 
+import { socialMedias } from '@/lib/constant';
+
 import CherryFilmaLogo from './../public/logo.png';
 import ScrollLink from './ScrollLink';
-
-import { socialMedias } from '@/lib/constant';
 
 const NAV_MENU = [
   {

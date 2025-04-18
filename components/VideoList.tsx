@@ -6,7 +6,8 @@ import Glide from '@glidejs/glide';
 import '@glidejs/glide/dist/css/glide.core.min.css';
 import '@glidejs/glide/dist/css/glide.theme.min.css';
 import { Dialog, DialogHeader, DialogBody } from '@material-tailwind/react';
-import youtube from 'app/youtube';
+
+import youtube from '@/app/youtube';
 
 import YoutubePlayer from './YoutubePlayer';
 
