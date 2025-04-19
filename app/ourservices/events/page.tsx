@@ -15,7 +15,7 @@ export const metadata = constructMetadata({
 const page: React.FC = () => {
   return (
     <div className="overflow-x-hidden">
-      <Hero text="Events" imgSrc={'/events.jpg'} />
+      <Hero text="events" imgSrc={'/events.jpg'} />
       {events.map((section) => (
         <VideoSection {...section} key={section.playlistId} />
       ))}

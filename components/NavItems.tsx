@@ -6,7 +6,7 @@ import ScrollLink from './ScrollLink';
 const NAV_MENU = [
   { name: 'Home', href: '/', scrollToSelector: '#home-section' },
   { name: 'About', href: '/', scrollToSelector: '#about-section' },
-  { name: 'Our Services', href: '/ourservices/films', scrollToSelector: '' },
+  { name: 'Our Services', href: '/ourservices/films', scrollToSelector: '#our-services' },
   { name: 'Contact Us', href: '/', scrollToSelector: '#contact-section' }
 ];
 
@@ -37,7 +37,7 @@ export const NavItems: React.FC<NavItemsProps> = React.memo(({ isScrolling, isSm
           return (
             <ScrollLink href={href} scrollToSelector={scrollToSelector} key={index + name}>
               <div
-                className={`hover:text-rose-500  hover:font-medium transition-all text-white px-2 pt-4 lg:pt-0 ${isSmall ? 'text-xl' : ''}`}
+                className={`hover:text-rose-500 font-medium transition-all text-white px-2 pt-4 lg:pt-0 ${isSmall ? 'text-xl' : ''}`}
                 onClick={handleClick}
               >
                 {name}
@@ -53,7 +53,7 @@ export const NavItems: React.FC<NavItemsProps> = React.memo(({ isScrolling, isSm
                     <Link
                       href={href}
                       key={index}
-                      className={`hover:text-rose-500  hover:font-medium transition-all w-full outline-none text-white pt-4 lg:pt-0 ${
+                      className={`hover:text-rose-500 font-medium transition-all w-full outline-none text-white pt-4 lg:pt-0 ${
                         isSmall ? 'text-xl' : ''
                       } ${isScrolling ? 'lg:text-black' : ''}`}
                       onClick={handleClick}
@@ -64,10 +64,7 @@ export const NavItems: React.FC<NavItemsProps> = React.memo(({ isScrolling, isSm
                 </div>
               ) : (
                 <div className="relative">
-                  <button
-                    onClick={() => setOpen(!open)}
-                    className="hover:text-rose-500  hover:font-medium transition-all flex items-center"
-                  >
+                  <button onClick={() => setOpen(!open)} className="hover:text-rose-500 font-medium transition-all flex items-center">
                     <span>{name}</span>
                     <i className={`fa-solid fa-chevron-down fa-xs ml-2 transition-transform ${open ? 'rotate-180' : ''}`}></i>
                   </button>

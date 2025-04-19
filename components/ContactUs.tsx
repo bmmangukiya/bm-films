@@ -21,7 +21,7 @@ const ContactUs = () => {
         id="contact-section"
         className="lg:absolute flex flex-col gap-8 justify-center items-center shadow-lg shadow-rose-500 bg-dark lg:-mt-44 py-10 lg:py-24 md:px-10 lg:w-[50%] w-full drop-shadow-lg sm:top-[60%] lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:-translate-y-1/5"
       >
-        <AnimatedText text="Contact Us" textClassName="text-4xl font-bold text-white" duration={0.02} />
+        <AnimatedText text="Contact Us" textClassName="text-4xl font-bold text-white" />
 
         <div className="h-full w-full flex-1 p-10 flex flex-col gap-5 justify-start items-center text-white">
           <div className="flex-1 h-full space-y-5">
