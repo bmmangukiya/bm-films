@@ -25,6 +25,11 @@ type NavItemsProps = {
 export const NavItems: React.FC<NavItemsProps> = React.memo(({ isScrolling, isSmall = false, onItemClick }) => {
   const [open, setOpen] = useState(false);
 
+  const handleClick = () => {
+    setOpen(false);
+    onItemClick?.();
+  };
+
   return (
     <>
       {NAV_MENU.map(({ name, href = '', scrollToSelector }, index) => {
@@ -33,7 +38,7 @@ export const NavItems: React.FC<NavItemsProps> = React.memo(({ isScrolling, isSm
             <ScrollLink href={href} scrollToSelector={scrollToSelector} key={index + name}>
               <div
                 className={`hover:text-rose-500  hover:font-medium transition-all text-white px-2 pt-4 lg:pt-0 ${isSmall ? 'text-xl' : ''}`}
-                onClick={onItemClick}
+                onClick={handleClick}
               >
                 {name}
               </div>
@@ -51,7 +56,7 @@ export const NavItems: React.FC<NavItemsProps> = React.memo(({ isScrolling, isSm
                       className={`hover:text-rose-500  hover:font-medium transition-all w-full outline-none text-white pt-4 lg:pt-0 ${
                         isSmall ? 'text-xl' : ''
                       } ${isScrolling ? 'lg:text-black' : ''}`}
-                      onClick={onItemClick}
+                      onClick={handleClick}
                     >
                       {name}
                     </Link>
@@ -73,10 +78,7 @@ export const NavItems: React.FC<NavItemsProps> = React.memo(({ isScrolling, isSm
                           href={href}
                           key={index}
                           className={`block px-4 py-2 hover:text-rose-500 transition-all text-white`}
-                          onClick={() => {
-                            if (onItemClick) onItemClick();
-                            setOpen(false);
-                          }}
+                          onClick={handleClick}
                         >
                           {name}
                         </Link>

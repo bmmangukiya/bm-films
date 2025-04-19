@@ -3,7 +3,7 @@ import dynamic from 'next/dynamic';
 
 import CommonHeadings from './CommonHeadings';
 
-const VideoList = dynamic(() => import('./VideoList'), { ssr: false });
+const VideoList = dynamic(() => import('./VideoList'));
 
 const VideoSection = ({ title, playlistId }) => {
   return (
