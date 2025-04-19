@@ -7,7 +7,7 @@ function Hero({ text, imgSrc }) {
     <section className="relative w-full h-[50dvh] sm:h-[80dvh] overflow-hidden bg-black sm:bg-fixed">
       <div className="absolute inset-0 flex items-center justify-center">
         <ViewTransition name={`img-${text}`}>
-          <Image src={imgSrc} alt={text} className="object-cover brightness-20" fill />
+          <Image src={imgSrc} alt={text} className="object-cover brightness-20" fill sizes="100dvw" />
         </ViewTransition>
         <ViewTransition name={`text-${text}`}>
           <BlurIn

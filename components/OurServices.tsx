@@ -19,7 +19,7 @@ const OurServices = () => {
       id="our-services"
       className="w-screen min-h-screen flex flex-col py-10 gap-10 md:gap-16 lg:gap-20 2xl:gap-28 justify-center items-center bg-[#FAFBFB]"
     >
-      <AnimatedText text="Our Services" textClassName="text-dark text-6xl font-extrabold py-5" />
+      <AnimatedText text="Our Services" textClassName="text-dark text-4xl sm:text-6xl font-extrabold py-5" />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 px-8">
         {services.map((service) => (
