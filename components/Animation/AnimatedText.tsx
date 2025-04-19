@@ -23,8 +23,8 @@ const AnimatedText = React.forwardRef<HTMLDivElement, AnimatedTextProps>(
   (
     {
       text,
-      duration = 0.5,
-      delay = 0.1,
+      duration = 0.0005,
+      delay = 0.0001,
       className,
       textClassName,
       underlineClassName,

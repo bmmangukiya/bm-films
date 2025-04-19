@@ -15,7 +15,7 @@ export const metadata = constructMetadata({
 const page = () => {
   return (
     <div className="overflow-x-hidden">
-      <Hero text="Photoshoots" imgSrc={'/photoshoots.jpg'} />
+      <Hero text="photoshoots" imgSrc={'/photoshoots.jpg'} />
       {photoshoots.map((section) => (
         <VideoSection {...section} key={section.playlistId} />
       ))}
