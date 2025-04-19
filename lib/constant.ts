@@ -31,7 +31,7 @@ export const films = [
   },
   { title: 'Machine', playlistId: 'PLGlBTvwIoYxJqODcgLEigJj7b4dUSPeOf' },
   { title: 'Demo films', playlistId: 'PLCE4B04DE18309CCC' },
-  { title: 'BTS', playlistId: 'PLf_S55hJSbGG6061ZUlKu6ifOnJyHs0tt' }
+  { title: 'BTS', playlistId: 'PLs9aWCCF6Oy6FsHJScgK7RiOTbOSITdX_' }
 ];
 
 export const photoshoots = [

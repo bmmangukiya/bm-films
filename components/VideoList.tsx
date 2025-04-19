@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Glide from '@glidejs/glide';
 import '@glidejs/glide/dist/css/glide.core.min.css';
 import '@glidejs/glide/dist/css/glide.theme.min.css';
-import { Dialog } from '@headlessui/react'; // Use Dialog from @headlessui/react
+import { Dialog, DialogPanel, DialogTitle } from '@headlessui/react';
 
 import youtube from '@/app/youtube';
 
@@ -126,20 +126,19 @@ const VideoList = ({ playlistId }) => {
       )}
 
       {selected && (
-        <Dialog open={openPlayer} onClose={handleClose}>
-          {/* Modal Content */}
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
-            <div className="bg-white rounded-lg p-6 max-w-lg w-full">
-              <Dialog.Title className="text-xl font-semibold text-center">{selected.title}</Dialog.Title>
+        <Dialog open={openPlayer} onClose={handleClose} className="relative z-50">
+          {/* Backdrop */}
+          <div className="fixed inset-0 bg-black bg-opacity-50" aria-hidden="true" />
+
+          {/* Centered container */}
+          <div className="fixed inset-0 flex items-center justify-center p-4">
+            {/* Dialog panel */}
+            <DialogPanel className="bg-light rounded-lg p-6 max-w-7xl w-full">
+              <DialogTitle className="text-xl font-semibold text-center">{selected.title}</DialogTitle>
               <div className="aspect-video mt-4">
                 <YoutubePlayer videoId={selected.id} />
               </div>
-              <div className="mt-4 text-center">
-                <button className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600" onClick={handleClose}>
-                  Close
-                </button>
-              </div>
-            </div>
+            </DialogPanel>
           </div>
         </Dialog>
       )}
