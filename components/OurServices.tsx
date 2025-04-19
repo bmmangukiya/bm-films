@@ -17,7 +17,7 @@ const OurServices = () => {
   return (
     <section
       id="our-services"
-      className="w-screen min-h-screen flex flex-col py-10 gap-10 md:gap-16 lg:gap-20 2xl:gap-28 justify-center items-center bg-[#FAFBFB]"
+      className="w-screen min-h-screen flex flex-col py-10 gap-10 md:gap-16 lg:gap-20 2xl:gap-28 justify-center items-center bg-[#FAFBFB] sticky top-0"
     >
       <AnimatedText text="Our Services" textClassName="text-dark text-4xl sm:text-6xl font-extrabold py-5" />
 
