@@ -19,7 +19,7 @@ const ContactUs = () => {
       </div>
       <div
         id="contact-section"
-        className="lg:absolute flex flex-col gap-8 justify-center items-center shadow-md shadow-cherry bg-dark lg:-mt-44 py-10 lg:py-24 md:px-10 lg:w-[50%] w-full drop-shadow-lg sm:top-[60%] lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:-translate-y-1/5"
+        className="lg:absolute flex flex-col gap-8 justify-center items-center shadow-lg shadow-rose-500 bg-dark lg:-mt-44 py-10 lg:py-24 md:px-10 lg:w-[50%] w-full drop-shadow-lg sm:top-[60%] lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:-translate-y-1/5"
       >
         <AnimatedText text="Contact Us" textClassName="text-4xl font-bold text-white" duration={0.02} />
 
@@ -31,15 +31,15 @@ const ContactUs = () => {
               title="View on Bing Maps"
               className="flex justify-start items-center gap-4"
             >
-              <i className="fa-solid fa-map-location-dot fa-xl text-cherry border border-white rounded-full px-4 py-7 text-center w-fit"></i>
+              <i className="fa-solid fa-map-location-dot fa-xl text-rose-500 border border-white rounded-full px-4 py-7 text-center w-fit"></i>
               Veera Desai Road, B 999, Remi Bizcourt, <br /> Opposite Supreme Chambers, <br /> Mumbai, Maharashtra 400053, IN
             </a>
             <a href="tel:+919913877730" target="_blank" title="Call us" className="flex justify-start items-center gap-4">
-              <i className="fa-solid fa-phone fa-xl text-cherry border border-white rounded-full px-4 py-7 text-center w-fit"></i>
+              <i className="fa-solid fa-phone fa-xl text-rose-500 border border-white rounded-full px-4 py-7 text-center w-fit"></i>
               +91 9913877730
             </a>
             <a href="mailto:contact@bmfilms.com" target="_blank" title="Send us an email" className="flex justify-start items-center gap-4">
-              <i className="fa-solid fa-envelope fa-xl text-cherry border border-white rounded-full px-4 py-7 text-center w-fit"></i>
+              <i className="fa-solid fa-envelope fa-xl text-rose-500 border border-white rounded-full px-4 py-7 text-center w-fit"></i>
               contact@bmfilms.com
             </a>
           </div>

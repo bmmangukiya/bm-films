@@ -32,7 +32,7 @@ export const NavItems: React.FC<NavItemsProps> = React.memo(({ isScrolling, isSm
           return (
             <ScrollLink href={href} scrollToSelector={scrollToSelector} key={index + name}>
               <div
-                className={`hover:text-cherry  hover:font-medium transition-all text-white px-2 pt-4 lg:pt-0 ${isSmall ? 'text-xl' : ''}`}
+                className={`hover:text-rose-500  hover:font-medium transition-all text-white px-2 pt-4 lg:pt-0 ${isSmall ? 'text-xl' : ''}`}
                 onClick={onItemClick}
               >
                 {name}
@@ -48,7 +48,7 @@ export const NavItems: React.FC<NavItemsProps> = React.memo(({ isScrolling, isSm
                     <Link
                       href={href}
                       key={index}
-                      className={`hover:text-cherry  hover:font-medium transition-all w-full outline-none text-white pt-4 lg:pt-0 ${
+                      className={`hover:text-rose-500  hover:font-medium transition-all w-full outline-none text-white pt-4 lg:pt-0 ${
                         isSmall ? 'text-xl' : ''
                       } ${isScrolling ? 'lg:text-black' : ''}`}
                       onClick={onItemClick}
@@ -59,19 +59,20 @@ export const NavItems: React.FC<NavItemsProps> = React.memo(({ isScrolling, isSm
                 </div>
               ) : (
                 <div className="relative">
-                  <button onClick={() => setOpen(!open)} className="hover:text-cherry  hover:font-medium transition-all flex items-center">
+                  <button
+                    onClick={() => setOpen(!open)}
+                    className="hover:text-rose-500  hover:font-medium transition-all flex items-center"
+                  >
                     <span>{name}</span>
                     <i className={`fa-solid fa-chevron-down fa-xs ml-2 transition-transform ${open ? 'rotate-180' : ''}`}></i>
                   </button>
                   {open && (
-                    <div
-                      className={`absolute left-0 mt-7 w-32 shadow-lg rounded-lg z-10 ${isScrolling ? 'text-black bg-white' : 'text-white bg-transparent'}`}
-                    >
+                    <div className={`absolute right-0 mt-6 w-32 shadow-lg rounded-lg z-10 text-white bg-black/50 bg-blend-overlay`}>
                       {ourServicesSubMenu.map(({ name, href = '' }, index) => (
                         <Link
                           href={href}
                           key={index}
-                          className={`block px-4 py-2 hover:text-cherry transition-all ${isScrolling ? 'text-black' : 'text-white'}`}
+                          className={`block px-4 py-2 hover:text-rose-500 transition-all text-white`}
                           onClick={() => {
                             if (onItemClick) onItemClick();
                             setOpen(false);

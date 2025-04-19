@@ -59,7 +59,7 @@ const Navbar = React.memo(() => {
           {socialMedias.map(({ name, icon, link }, index) => (
             <a key={index} href={link} target="_blank" rel="noopener noreferrer" title={`Visit ${name}'s profile`}>
               <i
-                className={`fab fa-${icon} fa-lg hover:text-cherry drop-shadow cursor-pointer hover:scale-110 transition-all duration-75 ease-in-out text-white`}
+                className={`fab fa-${icon} fa-lg hover:text-rose-500 drop-shadow cursor-pointer hover:scale-110 transition-all duration-75 ease-in-out text-white`}
               />
             </a>
           ))}
@@ -78,7 +78,7 @@ const Navbar = React.memo(() => {
               {socialMedias.map(({ name, icon, link }, index) => (
                 <a key={index} href={link} target="_blank" rel="noopener noreferrer" title={`Visit ${name}'s profile`}>
                   <i
-                    className={`fab fa-${icon} fa-xl hover:text-cherry drop-shadow cursor-pointer hover:scale-110 transition-all duration-75 ease-in-out text-white`}
+                    className={`fab fa-${icon} fa-xl hover:text-rose-500 drop-shadow cursor-pointer hover:scale-110 transition-all duration-75 ease-in-out text-white`}
                   />
                 </a>
               ))}
