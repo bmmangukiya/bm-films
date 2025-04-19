@@ -1,13 +1,13 @@
 import React from 'react';
+import { unstable_ViewTransition as ViewTransition } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { unstable_ViewTransition as ViewTransition } from 'react';
 
 function ServiceCard({ title, bg, url }) {
   return (
     <Link
       href={url}
-      className="relative cursor-pointer group aspect-square w-[300px] sm:w-[400px] lg:w-[300px] 2xl:w-[400px] overflow-hidden"
+      className="relative cursor-pointer group aspect-square w-[300px] sm:w-[400px] lg:w-[300px] 2xl:w-[400px] overflow-hidden rounded-3xl shadow-card"
     >
       <ViewTransition name={`img-${title}`}>
         <Image

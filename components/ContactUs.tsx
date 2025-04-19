@@ -17,9 +17,10 @@ const ContactUs = () => {
           title="Google Maps"
         ></iframe>
       </div>
+
       <div
         id="contact-section"
-        className="lg:absolute flex flex-col gap-8 justify-center items-center shadow-lg shadow-rose-500 bg-dark lg:-mt-44 py-10 lg:py-24 md:px-10 lg:w-[50%] w-full drop-shadow-lg sm:top-[60%] lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:-translate-y-1/5"
+        className="lg:absolute flex flex-col gap-8 justify-center items-center shadow-card bg-dark lg:-mt-44 py-16 lg:py-24 md:px-10 lg:w-[50%] w-full drop-shadow-lg sm:top-[60%] lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:-translate-y-1/5 rounded-t-3xl sm:rounded-2xl"
       >
         <AnimatedText text="Contact Us" textClassName="text-4xl font-bold text-white" />
 

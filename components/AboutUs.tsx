@@ -11,7 +11,7 @@ const AboutUs = () => {
   return (
     <section
       id="about-section"
-      className="sm:px-32 px-5 w-screen py-14 min-h-screen flex flex-col gap-20 justify-center items-center bg-dark"
+      className="sm:px-32 px-5 w-screen py-14 min-h-screen flex flex-col gap-20 justify-center items-center bg-dark bg-conversion-gradient rounded-t-4xl"
     >
       <AnimatedText text="About Us" textClassName="text-4xl sm:text-6xl font-extrabold text-white py-5" />
       <motion.div custom={1} variants={fadeUpVariants} initial="hidden" animate="visible">
