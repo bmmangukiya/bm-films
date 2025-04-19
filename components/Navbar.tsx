@@ -51,7 +51,7 @@ const Navbar = React.memo(() => {
 
         {/* Desktop nav */}
         <div className={`ml-10 hidden items-center gap-6 lg:flex mr-auto text-white`}>
-          <NavItems isScrolling={isScrolling} />
+          <NavItems isScrolling={isScrolling} onItemClick={() => setOpen(false)} />
         </div>
 
         {/* Desktop social */}
