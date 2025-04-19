@@ -3,11 +3,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 
+import { motion } from 'framer-motion';
+
 import { socialMedias } from '@/lib/constant';
 
 import { NavItems } from './NavItems';
 import ScrollLink from './ScrollLink';
-import { motion } from 'framer-motion';
 
 const Navbar = React.memo(() => {
   const [open, setOpen] = useState(false);

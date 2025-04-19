@@ -1,5 +1,6 @@
 import { unstable_ViewTransition as ViewTransition } from 'react';
 import Image from 'next/image';
+
 import { BlurIn } from './Animation/BlurIn';
 
 function Hero({ text, imgSrc }) {
