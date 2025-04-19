@@ -3,6 +3,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 
+import { motion } from 'framer-motion';
+
 import { socialMedias } from '@/lib/constant';
 
 import { NavItems } from './NavItems';
@@ -39,10 +41,14 @@ const Navbar = React.memo(() => {
   const toggleNavbar = () => setOpen((prev) => !prev);
 
   return (
-    <div
-      className={`fixed top-0 z-[9999] transition-all ease-in-out duration-500 w-[100dvw] bg-black flex justify-center p-2 py-4 ${
-        isScrolling ? 'bg-black shadow-lg' : 'lg:bg-transparent'
-      }`}
+    <motion.div
+      initial={{ backgroundColor: 'rgba(0, 0, 0, 0)' }}
+      animate={{
+        backgroundColor: isScrolling ? 'rgba(0, 0, 0, 1)' : 'rgba(0, 0, 0, 0)',
+        boxShadow: isScrolling ? '0px 4px 12px rgba(0, 0, 0, 0.4)' : '0px 0px 0px rgba(0,0,0,0)'
+      }}
+      transition={{ duration: 0.4, ease: 'easeInOut' }}
+      className="fixed top-0 z-[9999] w-[100dvw] flex justify-center p-2 py-4"
     >
       <div className="container flex align-middle px-4 sm:px-5">
         <ScrollLink href="/" onClick={() => setOpen(false)} scrollToSelector="#home-section">
@@ -86,7 +92,7 @@ const Navbar = React.memo(() => {
           </div>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 });
 

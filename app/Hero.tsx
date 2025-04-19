@@ -19,7 +19,6 @@ function Hero() {
         className="absolute inset-0 h-full w-full object-cover filter brightness-50"
       >
         <source src={'/file.mp4'} type="video/mp4" />
-        <track kind="captions" label="English" src="" srcLang="en"></track>
         Your browser does not support the video tag.
       </video>
 

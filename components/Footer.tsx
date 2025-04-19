@@ -4,13 +4,13 @@ import { socialMedias } from '@/lib/constant';
 
 const Footer = () => {
   return (
-    <footer className="flex w-full flex-col gap-2 flex-wrap items-center justify-center border-t border-blue-gray-50 py-6 text-center md:justify-between px-5">
+    <footer className="flex w-full flex-col gap-2 flex-wrap bg-black text-white items-center justify-center border-t border-slate-700/10 py-6 text-center md:justify-between px-5">
       <span>Follow us</span>
       <div className="flex gap-4">
         {socialMedias.map(({ name, icon, link }, index) => (
           <a key={index} href={link} target="_blank" rel="noopener noreferrer" title={`Visit ${name}'s profile`}>
             <i
-              className={`fab fa-${icon} fa-lg hover:text-rose-500 drop-shadow cursor-pointer hover:scale-110 transition-all duration-75 ease-in-out text-black`}
+              className={`fab fa-${icon} fa-lg hover:text-rose-500 drop-shadow cursor-pointer hover:scale-110 transition-all duration-75 ease-in-out text-white`}
             />
           </a>
         ))}

@@ -28,8 +28,7 @@ const ScrollLinkComponent: React.FC<ScrollLinkProps> = ({ href, scrollToSelector
     };
 
     if (pathname !== href) {
-      router.push(href);
-      setTimeout(scrollToTarget, 10);
+      router.push(`${href}/${scrollToSelector}`);
     } else {
       scrollToTarget();
     }
